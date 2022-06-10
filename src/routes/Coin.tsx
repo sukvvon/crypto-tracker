@@ -11,9 +11,45 @@ import {
 import styled from "styled-components";
 import { fetchCoinInfo, fetchCoinTickers } from "../api";
 import Chart from "./Chart";
-import { Button, Container, Header, Loader, Title } from "./Coins";
 import Price from "./Price";
 import { Helmet } from "react-helmet";
+
+export const Container = styled.div`
+  padding: 0 20px;
+  max-width: 480px;
+  margin: 0 auto;
+`;
+
+export const Header = styled.header`
+  height: 15vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+`;
+
+export const Button = styled.button`
+  font-size: 20px;
+  background-color: ${(props) => props.theme.boxColor};
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 20px;
+  color: ${(props) => props.theme.textColor};
+  cursor: pointer;
+  &:hover {
+    color: ${(props) => props.theme.accentColor};
+  }
+`;
+
+export const Title = styled.h1`
+  font-size: 48px;
+  color: ${(props) => props.theme.accentColor};
+`;
+
+export const Loader = styled.span`
+  text-align: center;
+  display: block;
+`;
 
 const BackButton = styled(Button)`
   font-size: 16px;
