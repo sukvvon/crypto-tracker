@@ -1,7 +1,6 @@
 import { useQuery } from "react-query";
 import styled from "styled-components";
 import { fetchCoinPrices1, fetchCoinPrices2, fetchCoinPrices3 } from "../api";
-import { OverviewItem } from "./Coin";
 
 const OverviewPrice = styled.div`
   display: flex;
@@ -11,6 +10,23 @@ const OverviewPrice = styled.div`
   border-radius: 10px;
   flex-wrap: wrap;
   row-gap: 20px;
+`;
+
+const OverviewItemPrice = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 33%;
+  span:first-child {
+    font-size: 48px;
+  }
+  span:nth-child(2) {
+    font-size: 10px;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
 `;
 
 interface IPriceData1 {
@@ -81,42 +97,51 @@ function Price({ coinId }: PriceProps) {
         "Loading..."
       ) : (
         <OverviewPrice>
-          <OverviewItem>
-            <span>USD 🇺🇸</span>
+          <OverviewItemPrice>
+            <span>🇺🇸</span>
+            <span>USD</span>
             <span>${prices1?.quotes.USD.price.toFixed(3)}</span>
-          </OverviewItem>
-          <OverviewItem>
-            <span>JPY 🇯🇵</span>
+          </OverviewItemPrice>
+          <OverviewItemPrice>
+            <span>🇯🇵</span>
+            <span>JPY</span>
             <span>¥{prices1?.quotes.JPY.price.toFixed(3)}</span>
-          </OverviewItem>
-          <OverviewItem>
-            <span>CNY 🇨🇳</span>
+          </OverviewItemPrice>
+          <OverviewItemPrice>
+            <span>🇨🇳</span>
+            <span>CNY</span>
             <span>¥{prices1?.quotes.CNY.price.toFixed(3)}</span>
-          </OverviewItem>
-          <OverviewItem>
-            <span>EUR 🇪🇺</span>
+          </OverviewItemPrice>
+          <OverviewItemPrice>
+            <span>🇪🇺</span>
+            <span>EUR</span>
             <span>€{prices2?.quotes.EUR.price.toFixed(3)}</span>
-          </OverviewItem>
-          <OverviewItem>
-            <span>GBP 🇬🇧</span>
+          </OverviewItemPrice>
+          <OverviewItemPrice>
+            <span>🇬🇧</span>
+            <span>GBP</span>
             <span>£{prices2?.quotes.GBP.price.toFixed(3)}</span>
-          </OverviewItem>
-          <OverviewItem>
-            <span>KRW 🇰🇷</span>
+          </OverviewItemPrice>
+          <OverviewItemPrice>
+            <span>🇰🇷</span>
+            <span>KRW</span>
             <span>₩{prices2?.quotes.KRW.price.toFixed(3)}</span>
-          </OverviewItem>
-          <OverviewItem>
-            <span>CSF 🇨🇭</span>
-            <span>₩{prices3?.quotes.CHF.price.toFixed(3)}</span>
-          </OverviewItem>
-          <OverviewItem>
-            <span>CAD 🇨🇦</span>
-            <span>₩{prices3?.quotes.CAD.price.toFixed(3)}</span>
-          </OverviewItem>
-          <OverviewItem>
-            <span>HKD 🇭🇰</span>
-            <span>₩{prices3?.quotes.HKD.price.toFixed(3)}</span>
-          </OverviewItem>
+          </OverviewItemPrice>
+          <OverviewItemPrice>
+            <span>🇨🇭</span>
+            <span>CSF</span>
+            <span>CSF{prices3?.quotes.CHF.price.toFixed(3)}</span>
+          </OverviewItemPrice>
+          <OverviewItemPrice>
+            <span>🇨🇦</span>
+            <span>CAD</span>
+            <span>${prices3?.quotes.CAD.price.toFixed(3)}</span>
+          </OverviewItemPrice>
+          <OverviewItemPrice>
+            <span>🇭🇰</span>
+            <span>HKD</span>
+            <span>${prices3?.quotes.HKD.price.toFixed(3)}</span>
+          </OverviewItemPrice>
         </OverviewPrice>
       )}
     </div>

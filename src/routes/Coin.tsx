@@ -13,6 +13,7 @@ import { fetchCoinInfo, fetchCoinTickers } from "../api";
 import Chart from "./Chart";
 import { Button, Container, Header, Loader, Title } from "./Coins";
 import Price from "./Price";
+import { Helmet } from "react-helmet";
 
 const BackButton = styled(Button)`
   font-size: 16px;
@@ -20,7 +21,7 @@ const BackButton = styled(Button)`
   left: 0;
 `;
 
-export const Overview = styled.div`
+const Overview = styled.div`
   display: flex;
   justify-content: space-between;
   background-color: ${(props) => props.theme.boxColor};
@@ -28,7 +29,7 @@ export const Overview = styled.div`
   border-radius: 10px;
 `;
 
-export const OverviewItem = styled.div`
+const OverviewItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -149,6 +150,11 @@ function Coin() {
   const onClick = () => history.push("/");
   return (
     <Container>
+      <Helmet>
+        <title>
+          {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
+        </title>
+      </Helmet>
       <Header>
         <BackButton onClick={onClick}>Back</BackButton>
         <Title>

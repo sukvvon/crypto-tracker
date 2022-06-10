@@ -4,6 +4,7 @@ import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { fetchCoins } from "../api";
 import { isDarkThemeState } from "../atom";
+import { Helmet } from "react-helmet";
 
 export const Container = styled.div`
   padding: 0 20px;
@@ -89,6 +90,9 @@ function Coins() {
   const onClick = () => setIsDarkTheme((current) => !current);
   return (
     <Container>
+      <Helmet>
+        <title>Coins</title>
+      </Helmet>
       <Header>
         <Title>Coins</Title>
         <ThemeToggleButton onClick={onClick}>
